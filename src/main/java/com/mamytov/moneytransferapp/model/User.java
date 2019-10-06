@@ -29,36 +29,4 @@ public class User {
     private List<Transaction> transactions;
 
 
-//    public List<Transaction> getTransactions() {
-//        return transactions;
-//    }
-//
-//    public void setTransactions(List<Transaction> transactions) {
-//        this.transactions = transactions;
-//    }
-//
-//
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
 }

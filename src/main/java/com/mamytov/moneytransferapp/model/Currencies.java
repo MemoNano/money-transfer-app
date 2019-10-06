@@ -4,7 +4,6 @@ package com.mamytov.moneytransferapp.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.List;
 
 @Entity

@@ -83,9 +83,24 @@ public class UserController {
         return ResponseEntity.ok(user.getTransactions());
     }
 
-    @GetMapping("/search")
-    public Iterable<User> search(@RequestParam String name) {
-        return userRepository.findByFirstName(name);
+//    @GetMapping("/search")
+//    public Iterable<User> search(@RequestParam String name) {
+//        return userRepository.findByFirstName(name);
+//
+//    }
 
+    @GetMapping("/search")
+    public Iterable<User> search(@RequestParam String firstName, @RequestParam(required = false) String lastName) {
+
+        if (firstName != null && lastName != null) {
+            return userRepository.findTop10ByFirstNameAndLastName(firstName, lastName);
+        }
+        if (firstName == null && lastName != null) {
+            return userRepository.findTop10ByLastName(lastName);
+        }
+        if (firstName != null && lastName == null) {
+            return userRepository.findTop10ByFirstName(firstName);
+        }
+        return userRepository.fetchByTop10();
     }
 }
