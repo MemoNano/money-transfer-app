@@ -3,8 +3,11 @@ package com.mamytov.moneytransferapp.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,7 +25,6 @@ public class User {
 
     @Column(length = 50, nullable = false, name = "last_name")
     private String lastName;
-
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference

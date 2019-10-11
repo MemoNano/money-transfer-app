@@ -49,34 +49,26 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByFirstNameAndLastNameTopTen() throws Exception {
-        User mockUser = new User();
-        mockUser.setFirstName("Chyngyz");
-        mockUser.setLastName("Aitmatov");
-        mockUser.setFirstName("Mamat");
-        mockUser.setLastName("Muktar");
-        mockUser.setFirstName("Elmira");
-        mockUser.setLastName("Koichubaeva");
-        mockUser.setFirstName("Nargiz");
-        mockUser.setLastName("Tursunuva");
-        mockUser.setFirstName("Almambet");
-        mockUser.setLastName("Sherimbekov");
-        mockUser.setFirstName("Anara");
-        mockUser.setLastName("Narbaeva");
-        this.entityManager.persist(mockUser);
+        User mockUser1 = null;
+
+        for (int i =0; i <12;i++){
+
+            mockUser1 = new User();
+            mockUser1.setFirstName("Mamat");
+            mockUser1.setLastName("Muktar");
+            this.entityManager.persist(mockUser1);
+        }
+
 
         Iterable<User> users = this.repository.findTop10ByFirstNameAndLastName("Mamat", "Muktar");
-
         List<User> userList = new ArrayList<>();
-
         users.forEach(userList::add);
-
-//        assertThat(userList).isNotEmpty();
-        assertThat(userList).contains(mockUser);
-
+        assertThat(userList).isNotEmpty();
+        assertThat(userList).doesNotContain(mockUser1);
         User user = userList.get(0);
-
-        assertThat(user.getLastName()).isEqualTo("Mamat");
-        assertThat(user.getFirstName()).isEqualTo("Muktar");
+        assertThat(user.getLastName()).isEqualTo("Muktar");
+        assertThat(user.getFirstName()).isEqualTo("Mamat");
+        assertThat(userList.size()).isEqualTo(10);
     }
 
 }
